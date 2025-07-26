@@ -10,18 +10,25 @@ logger = logging.getLogger()
 
 
 def go(args):
+    """Create a run and upload artifact to W&B
 
+    Args:
+        args (parser): 
+    """
     logger.info("Creating run exercise_1")
 
-    # Create a W&B run in the project ``exercise_1``. Set the option ``job_type="upload_file"``:
+    # Create a W&B run in the project ``exercise_1``. Set the option
+    # ``job_type="upload_file"``:
 
     run = wandb.init(project="exercise_1", job_type="upload_file")
 
-    # Create an instance of the class ``wandb.Artifact``. Use the ``artifact_name`` parameter to fill
+    # Create an instance of the class ``wandb.Artifact``. 
+    # Use the ``artifact_name`` parameter to fill
     # the keyword ``name`` when constructing the wandb.Artifact class.
     # Use the parameters ``artifact_type`` and ``artifact_desc`` to fill respectively the keyword
     # ``type`` and ``description``
-    # HINT: you can use args.artifact_name to reference the parameter artifact_name
+    # HINT: you can use args.artifact_name to reference the parameter
+    # artifact_name
 
     logger.info("Creating artifact")
     artifact = wandb.Artifact(name=args.artifact_name,
@@ -33,7 +40,7 @@ def go(args):
 
     logger.info("Attaching file to artifact")
     artifact.add_file(args.input_file)
-    
+
     logger.info("Logging artifact")
     run.log_artifact(artifact)
     run.finish()
@@ -45,16 +52,22 @@ if __name__ == "__main__":
     )
 
     parser.add_argument(
-        "--input_file", type=pathlib.Path, help="Path to the input file", required=True
-    )
+        "--input_file",
+        type=pathlib.Path,
+        help="Path to the input file",
+        required=True)
 
     parser.add_argument(
-        "--artifact_name", type=str, help="Name for the artifact", required=True
-    )
+        "--artifact_name",
+        type=str,
+        help="Name for the artifact",
+        required=True)
 
     parser.add_argument(
-        "--artifact_type", type=str, help="Type for the artifact", required=True
-    )
+        "--artifact_type",
+        type=str,
+        help="Type for the artifact",
+        required=True)
 
     parser.add_argument(
         "--artifact_description",
@@ -67,11 +80,10 @@ if __name__ == "__main__":
 
     go(args)
 
-
     """
-    Run the script using as input_file the path to the provided zen.txt file, 
+    Run the script using as input_file the path to the provided zen.txt file,
     and fill the other parameters reasonably. For example:
-    
+
     python upload_artifact.py --input_file zen.txt \
             --artifact_name zen_of_python \
             --artifact_type text_file \
