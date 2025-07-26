@@ -42,4 +42,5 @@ if __name__ == "__main__":
 
     go(args)
 
+    # run the script as follows
     # python use_artifact.py --artifact_name exercise_1/zen_of_python:v1
