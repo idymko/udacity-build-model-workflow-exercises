@@ -19,8 +19,9 @@ def go(args):
     # YOUR CODE HERE: get the artifact and store its local path in the variable "artifact_path"
     # HINT: you can get the artifact path by using the "file()" method
 
-    artifact_path = artifact.file()
-
+    artifact = run.use_artifact(args.artifact_name)
+    artifact_path = artifact.file(args.artifact_name)
+    logger.info(f"Local path to artifact: {artifact_path}")
     logger.info("Artifact content:")
     with open(artifact_path, "r") as fp:
         content = fp.read()
@@ -40,3 +41,5 @@ if __name__ == "__main__":
     args = parser.parse_args()
 
     go(args)
+
+    # python use_artifact.py --artifact_name exercise_1/zen_of_python:v1
