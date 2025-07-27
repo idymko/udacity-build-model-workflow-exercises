@@ -1,0 +1,15 @@
+artifact_uri: file:///Users/dkysylychyn/python/MLDevOps/udacity-build-model-workflow-exercises/lesson-1-machine-learning-pipelines/exercises/exercise_2/mlruns/0/05e098e756fa46269832eb7c943e0b62/artifacts
+end_time: 1753605285015
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: 05e098e756fa46269832eb7c943e0b62
+run_name: handsome-dolphin-686
+run_uuid: 05e098e756fa46269832eb7c943e0b62
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1753605283432
+status: 4
+tags: []
+user_id: dkysylychyn
