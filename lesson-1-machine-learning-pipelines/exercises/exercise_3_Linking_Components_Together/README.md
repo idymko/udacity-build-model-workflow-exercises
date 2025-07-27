@@ -34,3 +34,30 @@ Your task is to stitch these two components together in a pipeline.
 5. Go to W&B, in the artifact section, pick an artifact then click on Graph view. You will see
    your first pipeline as:
    ![screenshot](first_pipeline.png "first pipeline")
+
+
+## Structure:
+```bash
+|exercise_3
+|
+|--dowloaded_data
+|  |--conda.yml
+|  |--MLproject
+|  |--download_data.py
+|
+|--process_data
+|  |--conda.yml
+|  |--MLproject
+|  |--run.py
+|
+|--conda.yml	-> environment dependencies
+|--MLproject	-> mlflow project definition parameters
+|--config.yaml	-> hydra parameters
+|--main.py		-> python code that is called in MLproject
+```
+
+## Run 
+Run in the directory of the “main.py” file
+```bash
+mlflow run . 
+```
