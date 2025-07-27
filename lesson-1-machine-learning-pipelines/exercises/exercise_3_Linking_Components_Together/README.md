@@ -61,3 +61,6 @@ Run in the directory of the “main.py” file
 ```bash
 mlflow run . 
 ```
+```bash
+mlflow run . -P hydra_options="main.experiment_name=prod"
+```
