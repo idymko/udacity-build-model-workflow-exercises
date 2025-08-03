@@ -27,7 +27,7 @@ def go(args):
     logger.info("Remove NAs and add a new feature")
     df['title'] = df['title'].fillna(value='')              # replace NA with empy char
     df['song_name'] = df['song_name'].fillna(value='')      # replace NA with empy char
-    df['text_feature'] = df['title'] + df['song_name']      # concat 'title' and 'song_name' to a new feature 
+    df['text_feature'] = df['title'] + ' ' + df['song_name']      # concat 'title' and 'song_name' to a new feature 
     ## NOTE: again, in a real setting, you will have to make sure that your 
     ## feature store provides this text_feature at inference time, OR, you 
     ## will have to move the computation of this feature to the inference pipeline.
