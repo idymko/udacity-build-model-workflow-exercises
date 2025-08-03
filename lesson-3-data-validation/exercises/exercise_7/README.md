@@ -7,3 +7,9 @@ Complete the tests in ``test_data.py`` file which contains the tests for ``pytes
 are in the file.
 
 Please ignore the deprecation warning you might get, related to ``wandb``.
+
+# Run
+In the solution folder:
+```bash 
+mlflow run .
+```
