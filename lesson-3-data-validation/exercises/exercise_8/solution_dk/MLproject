@@ -7,7 +7,7 @@ entry_points:
     # will not be uploaded to W&B. Hence, the log in W&B will be empty.
     command: >-
       pytest -s -vv .
-    # pytest -s -vv .
+
 # -s:
 #   Disables output capturing by pytest. This means that any output (e.g., print statements or logs) will be displayed directly in the terminal instead of being captured and hidden by pytest.
 #   This is useful when you want to debug or see real-time output during test execution.
