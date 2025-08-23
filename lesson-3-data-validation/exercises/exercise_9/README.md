@@ -18,3 +18,19 @@ reusability.
    
 4. Try again using a much higher threshold for the KS test (like 0.9). The test will fail.
    Can you say why?
+
+# Run
+Run in the folder where MLproject is located: 
+```bash
+mlflow run . \
+   -P reference_artifact="exercise_6/data_train.csv:latest" \
+   -P sample_artifact="exercise_6/data_test.csv:latest" \
+   -P ks_alpha=0.05
+```
+
+```bash
+mlflow run . \
+   -P reference_artifact="exercise_6/data_train.csv:latest" \
+   -P sample_artifact="exercise_6/data_test.csv:latest" \
+   -P ks_alpha=0.99
+```
