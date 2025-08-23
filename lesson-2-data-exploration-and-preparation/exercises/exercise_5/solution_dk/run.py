@@ -25,6 +25,7 @@ def go(args):
     df = df.drop_duplicates().reset_index(drop=True)
     
     logger.info("Remove NAs and add a new feature")
+    df = df.dropna(subset=['loudness'])
     df['title'] = df['title'].fillna(value='')              # replace NA with empy char
     df['song_name'] = df['song_name'].fillna(value='')      # replace NA with empy char
     df['text_feature'] = df['title'] + ' ' + df['song_name']      # concat 'title' and 'song_name' to a new feature 
