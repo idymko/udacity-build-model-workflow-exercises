@@ -6,7 +6,7 @@ entry_points:
     # NOTE: the -s flag is necessary, otherwise pytest will capture all the output and it
     # will not be uploaded to W&B. Hence, the log in W&B will be empty.
     command: >-
-      pytest -s -v .
+      pytest -s -vv .
     # pytest -s -vv .
 # -s:
 #   Disables output capturing by pytest. This means that any output (e.g., print statements or logs) will be displayed directly in the terminal instead of being captured and hidden by pytest.
