@@ -30,7 +30,8 @@ pipe_reload = torch.jit.load("inference_artifact.pt")
 # Load one example
 # NOTE: these operations are usually taken care by the inference
 # engine
-img = Image.open("dog.jpg")
+#img = Image.open("dog.jpg")
+img = Image.open("frenchbulldog.jpg")
 img.load()
 # Make into a batch of 1 element
 data = transforms.ToTensor()(np.asarray(img, dtype="uint8").copy()).unsqueeze(0)
