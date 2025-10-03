@@ -27,3 +27,10 @@ def go(config: DictConfig):
 
 if __name__ == "__main__":
     go()
+
+    """
+    If we want Hydra to do a sweep, we need to specify the values we want to explore and then the options -m ("multi-run"). So for example:
+    > mlflow run . -P hydra_options="-m parameters.a=3,4,5"
+    will generate 3 runs. The first one will have a=3, the second a=4 and the third a=5.
+
+    """

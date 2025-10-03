@@ -7,7 +7,7 @@ related to the entire pipeline from the configuration file. Make sure to open ``
 and familiarize yourself with its structure, in particular the new ``random_forest_pipeline``
 section.
 
-## Experiment 1
+## Experiment 1: set max_depth
 Let's start by overriding the ``max_depth`` parameter of the ``random_forest_pipeline.random_forest`` 
 section of the configuration file (``config.yaml``):
 
@@ -15,9 +15,13 @@ section of the configuration file (``config.yaml``):
 mlflow run . -P hydra_options="random_forest_pipeline.random_forest.max_depth=5"
 ```
 
-## Experiment 2
+## Experiment 2: n_estimators
 Now run another experiment overriding ``n_estimators`` in the ``random_forest`` section and setting 
 it to 10.
+```bash
+# my solution to experiment 2
+mlflow run . -P hydra_options="random_forest_pipeline.random_forest.n_estimators=10"
+```
 
 ## Experiment 3: sweep on ``max_depth``
 Let's now exploit the sweep capability of Hydra to try several options for the ``max_depth``
@@ -27,6 +31,11 @@ Let's start with a simple list and try the values 1, 5 and 10
 
 > **NOTE**: remember to add the ``-m`` option at the beginning, otherwise the sweep will not
 > work.
+```bash
+# my solution to experiment 3a
+mlflow run . -P hydra_options="-m random_forest_pipeline.random_forest.max_depth=1,5,10"
+```
+
 
 Now let's do something more advanced, and use the ``range`` operator of Hydra. Remember that
 ``range(1,10,2)`` means all the integers between 1 and 50 in increments of 2. Use the
@@ -34,6 +43,10 @@ Now let's do something more advanced, and use the ``range`` operator of Hydra. R
 
 > **NOTE**: do not put any space within the range specification. So ``range(1,10,2)`` works, but
 > ``range(1, 10, 2)`` does not!
+```bash
+# my solution to experiment 3b
+mlflow run . -P hydra_options="-m random_forest_pipeline.random_forest.max_depth=range(1,10,2)"
+```
 
 ## Experiment 4: sweep on multiple parameters
 Now let's do a proper sweep and optimize multiple parameters. We can use a range operator on 
@@ -49,6 +62,15 @@ in parallel on your machine. Just add ``hydra/launcher=joblib`` to the ``hydra_o
 Despite this being around 80 jobs, it should only take a few minutes to complete (depending on 
 the speed of your computer and your internet, between 5 and 10 minutes).
 
+```bash
+# my solution to experiment 4
+mlflow run . -P hydra_options="hydra/launcher=joblib random_forest_pipeline.random_forest.max_depth=range(10,50,3) random_forest_pipeline.tfidf.max_features=range(50,200,50) -m"
+
+# alternative from the video solution
+mlflow run . \
+  -P hydra_options="-m random_forest_pipeline.random_forest.max_depth=range(10,50,3) random_forest_pipeline.tfidf.max_features=range(50,200,50) hydra/launcher=joblib"
+```
+
 ## Select best performing model
 Now you can go to W&B and select the best performing model.
 
@@ -56,3 +78,18 @@ The easiest way to do so is to select "Columns" in the upper right, deselect all
 add only ``random_forest.max_depth``, ``tfidf.max_features`` and AUC. Then click on the three 
 dots of the AUC column and select "Sort desc" to sort in descending order. The job at the top 
 will be the job with the best performances.
+
+### Best Model
+https://wandb.ai/dkysylychyn-udacity/exercise_11/table?nw=nwuserdkysylychyn
+
+Winner
+* Job#=20,
+* max_depth=19, 
+* max_features=100, 
+* AUC=0.95484
+
+Optimal
+* Job#=12,
+* max_depth=16, 
+* max_features=50, 
+* AUC=0.95115
