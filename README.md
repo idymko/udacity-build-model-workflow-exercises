@@ -14,6 +14,9 @@ This directory contains: `demo`, `exercises`, with the `exercises` directory org
 ## Course Info
 This course empowers the students to be more efficient, effective, and productive in modern, real-world ML projects by adopting best practices around reproducible workflows. In particular, it teaches the fundamentals of MLops and how to: a) create a clean, organized, reproducible, end-to-end machine learning pipeline from scratch using MLflow b) clean and validate the data using pytest c) track experiments, code, and results using GitHub and Weights & Biases d) select the best-performing model for production and e) deploy a model using MLflow. Along the way, it also touches on other technologies like Kubernetes, Kubeflow, and Great Expectations and how they relate to the content of the class.
 
+## Course link
+https://www.udacity.com/enrollment/nd0821 
+
 ## Exercises 
 ### Lesson 1 - Machine learning pipelienes
 * Exercise 1 - Write a script that uploads an artifact to Weights & Biases
