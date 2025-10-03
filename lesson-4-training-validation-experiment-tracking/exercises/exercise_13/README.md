@@ -15,3 +15,12 @@ to mark is as "production-ready".
 > HINT: to apply a new tag, go to the Artifact section of ``exercise_12``, click on 
 > ``model_export`` and then select the ``latest`` version. Then go to the Aliases section, click
 > on the `+` sign and add the tag ``prod``.
+
+```bash
+# run in solution folder
+mlflow run . -P model_export="exercise_12/model_export:latest" \
+             -P test_data="exercise_6/data_test.csv:latest"
+```
+
+Input artifacts of the run for exercise 13
+https://wandb.ai/dkysylychyn-udacity/exercise_13/runs/pwsvn143/artifacts
