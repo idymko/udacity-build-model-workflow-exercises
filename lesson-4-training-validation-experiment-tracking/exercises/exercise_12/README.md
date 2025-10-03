@@ -9,3 +9,14 @@ Once you are done, execute the pipeline setting ``random_forest_pipeline.random_
 to 13 and ``random_forest_pipeline.tfidf.max_features`` to 10. These parameters are almost the best
 performing, and give a small model which is going to be very fast in production. After the run 
 your exported pipeline will be saved as the artifact ``exercise_12/model_export``.
+
+```bash
+# go to folder
+cd /Users/dkysylychyn/python/MLDevOps/udacity-build-model-workflow-exercises/lesson-4-training-validation-experiment-tracking/exercises/exercise_12/solution_dk
+
+# run mlflow
+mlflow run . -P hydra_options="-m random_forest_pipeline.random_forest.max_depth=13 random_forest_pipeline.tfidf.max_features=10"
+
+# or set these values directly in config.yaml file
+mlflow run .
+```
