@@ -60,3 +60,30 @@ A few notes and instructions:
   ```bash
   mlflow run . -P hydra_options="main.execute_steps='download,preprocess'"
   ```
+
+# Resulting pipeline
+
+The following steps are contained in the pipeline: 
+- ``download``: download data from url and produce an artifact ``raw_data.parquet``
+- ``preprocess``: clean the data and store them into artifact: ``preprocessed_data.csv``
+- ``check_data``: validating the input data
+- ``segregate``: splitting data into test and train: ``data_train.csv`` and ``data_test.csv``
+- ``random_forest``: running the model and storing to ``model_export`` directory
+- ``evaluate``: testing the model
+
+Each step can be run separetely or in groups, e.g.:
+- ``mlflow run . -P hydra_options="main.execute_steps='download,preprocess'"``
+- ``mlflow run . -P hydra_options="main.execute_steps='preprocess,check_data'"``
+- ``mlflow run . -P hydra_options="main.execute_steps='segregate'"``
+- ``mlflow run . -P hydra_options="main.execute_steps='random_forest'"``
+- ``mlflow run . -P hydra_options="main.execute_steps='evaluate'"``
+
+Data and model artifacts are stored in weight and biases:
+https://wandb.ai/dkysylychyn-udacity/exercise_14/overview
+
+The following diagram contains the whole pipeline (screenshot from weight and biases:
+  ![screenshot](full_ml_pipeline.png "screenshot")
+
+## Final run
+
+- ``mlflow run . -P hydra_options="main.project_name='genre_classification_prod'"``

@@ -25,6 +25,11 @@ def go(args):
     logger.info("Dropping duplicates")
     df = df.drop_duplicates().reset_index(drop=True)
 
+    # Remove NAs (as 'test_kolmogorov_smirnov' test fails
+    # assert nan > 0.005116196891823743)
+    logger.info("Remove NAs")
+    df = df.dropna(subset=['loudness'])
+
     # A minimal feature engineering step: a new feature
     logger.info("Feature engineering")
     df['title'].fillna(value='', inplace=True)
