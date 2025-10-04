@@ -9,3 +9,4 @@ dependencies:
   - pyarrow=14.0.2
   - pip:
       - wandb==0.16.4
+      - databricks-cli
