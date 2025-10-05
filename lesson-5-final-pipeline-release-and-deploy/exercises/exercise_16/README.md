@@ -116,6 +116,8 @@ use your model from whenever as a simple API call.
 > NOTE: Make sure Python Docker SDK is not outdated to avoid errors. Some older versions of the docker and urllib3 libraries don’t properly handle newer Docker socket schemes. Upgrade both: `pip install --upgrade docker urllib3`.
 > It is also recommended to update Python to > 3.10 version.
 
+> ! Docker deplyoment did not work.
+
 2. Follow the procedure for your Cloud provider of choice to deploy a Docker image
 
 3. Open port 5000 on the machine hosting the image
