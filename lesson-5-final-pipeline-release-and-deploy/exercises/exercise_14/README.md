@@ -86,4 +86,5 @@ The following diagram contains the whole pipeline (screenshot from weight and bi
 
 ## Final run
 
+Run all in once by specifying the project name. 
 - ``mlflow run . -P hydra_options="main.project_name='genre_classification_prod'"``
